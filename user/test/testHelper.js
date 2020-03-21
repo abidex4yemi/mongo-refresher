@@ -1,9 +1,23 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/usersTest', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+before((done) => {
+  // connect to db
+  mongoose.connect('mongodb://localhost/usersTest', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+
+  mongoose.connection
+    .once('open', () => {
+      console.log('Connected to db successfully');
+      done();
+    })
+    .on('error', (error) => console.log('Error', error));
 });
-mongoose.connection
-  .once('open', () => console.log('Connected to db successfully'))
-  .on('error', (error) => console.log('Error', error));
+
+beforeEach((done) => {
+  // drop all user record
+  mongoose.connection.collections.users.drop(() => {
+    done();
+  });
+});
