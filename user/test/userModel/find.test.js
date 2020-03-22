@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../../src/model/user');
+const { User } = require('../../src/model');
 
 describe('User model [find existing record]', () => {
   let user = {};

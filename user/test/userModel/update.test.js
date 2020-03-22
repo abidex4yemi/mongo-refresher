@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../../src/model/user');
+const { User } = require('../../src/model');
 
 describe('User model [update an existing record', () => {
   let user = {};
@@ -45,8 +45,9 @@ describe('User model [update an existing record', () => {
   it('should increase a user postCount by 1', async () => {
     const updatedUser = await User.updateOne(
       { name: 'John ' },
-      { $inc: { postCount: 1 } }
+      { $inc: { likes: 1 } }
     );
+
     assert(updatedUser.nModified === 1);
   });
 });

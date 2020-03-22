@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../../src/model/user');
+const { User } = require('../../src/model');
 
 describe('validate provided user data', () => {
   it('should require a user name', () => {
