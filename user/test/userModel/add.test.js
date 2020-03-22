@@ -1,5 +1,5 @@
 const assert = require('assert');
-const User = require('../src/model/user');
+const User = require('../../src/model/user');
 
 describe('User model [add new record]', () => {
   it('should create new user', async () => {

@@ -4,7 +4,8 @@ before((done) => {
   // connect to db
   mongoose.connect('mongodb://localhost/usersTest', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   });
 
   mongoose.connection
@@ -20,4 +21,11 @@ beforeEach((done) => {
   mongoose.connection.collections.users.drop(() => {
     done();
   });
+});
+
+after((done) => {
+  mongoose.models = {};
+  mongoose.modelSchemas = {};
+  mongoose.connection.close();
+  done();
 });
