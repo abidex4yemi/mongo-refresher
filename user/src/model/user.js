@@ -6,7 +6,11 @@ const UserSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      validate: {
+        validator: (name) => name.length >= 2,
+        message: 'Name must be at least two(2) characters'
+      },
+      required: [true, 'Name is required'],
       trim: true
     },
     postCount: {
