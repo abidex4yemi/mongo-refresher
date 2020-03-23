@@ -1,5 +1,4 @@
 const assert = require('assert');
-const mongoose = require('mongoose');
 const { User, Post } = require('../../src/model');
 const mockData = require('../mocData');
 
