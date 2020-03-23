@@ -18,7 +18,7 @@ before((done) => {
 
 beforeEach((done) => {
   // drop all user record
-  mongoose.connection.collections.users.drop(() => {
+  mongoose.connection.db.dropDatabase(() => {
     done();
   });
 });

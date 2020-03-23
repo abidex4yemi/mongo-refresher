@@ -3,7 +3,7 @@ const { User } = require('../../src/model');
 const mockData = require('../mocData');
 
 describe('Post model [add new record]', () => {
-  it('should create new post', async () => {
+  it.skip('should create new post', async () => {
     const user = new User({
       name: mockData.users[0].name,
       posts: [mockData.posts[0]]
@@ -14,7 +14,7 @@ describe('Post model [add new record]', () => {
     assert(user.posts[0].body === mockData.posts[0].body);
   });
 
-  it('should add new post to existing posts Array', async () => {
+  it.skip('should add new post to existing posts Array', async () => {
     // create new user
     const user = new User({
       name: mockData.users[1].name,

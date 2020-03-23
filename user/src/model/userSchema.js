@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const postSchema = require('./postSchema');
 
 const Schema = mongoose.Schema;
 
@@ -14,10 +13,19 @@ const userSchema = new Schema(
       required: [true, 'Name is required'],
       trim: true
     },
-    posts: [postSchema],
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'post'
+      }
+    ],
     likes: {
       type: Number,
       default: 0
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now
     }
   },
   { versionKey: false }
@@ -25,6 +33,13 @@ const userSchema = new Schema(
 
 userSchema.virtual('postCount').get(function() {
   return this.posts.length;
+});
+
+userSchema.pre('remove', async function(next) {
+  const Post = mongoose.model('post');
+
+  await Post.remove({ _id: { $in: this.posts } });
+  next();
 });
 
 module.exports = userSchema;

@@ -11,6 +11,15 @@ const posts = [
   }
 ];
 
+const comments = [
+  {
+    body: 'Congrats on your new post'
+  },
+  {
+    body: 'Yes, I do agree with evaluation'
+  }
+];
+
 const users = [
   {
     name: 'Jane'
@@ -20,7 +29,10 @@ const users = [
   },
   {
     name: 'Yemi'
+  },
+  {
+    name: 'Lola'
   }
 ];
 
-module.exports = { posts, users };
+module.exports = { posts, users, comments };
