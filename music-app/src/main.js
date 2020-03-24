@@ -22,6 +22,7 @@ const App = () => {
 };
 
 const db = new Db('upstar_music', new Server('localhost', 27017));
+
 db.open().then(() => {
   window.db = db;
   mongoose.connect('mongodb://localhost/upstar_music');

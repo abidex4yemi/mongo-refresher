@@ -44,7 +44,7 @@ class ArtistDetail extends Component {
               <i>copies sold</i>
             </div>
             <div>
-              <h5>{album.numberTracks}</h5>
+              <h5>{album.tracks}</h5>
               <i>tracks</i>
             </div>
           </div>
@@ -55,7 +55,7 @@ class ArtistDetail extends Component {
 
   render() {
     if (!this.props.artist) {
-      return <div>Todo: implement "FindArtist" query</div>;
+      return <div></div>;
     }
 
     const {
