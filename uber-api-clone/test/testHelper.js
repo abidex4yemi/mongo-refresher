@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../config/keys');
+const Driver = mongoose.model('driver');
 
 before((done) => {
   // connect to db
@@ -18,14 +19,13 @@ before((done) => {
     .on('error', (error) => console.log('Error', error));
 });
 
-beforeEach((done) => {
+beforeEach(async () => {
   // drop all user record
-  mongoose.connection.db.dropDatabase(() => {
-    done();
-  });
+  await mongoose.connection.db.dropDatabase();
+  await Driver.ensureIndexes({ location: '2dsphere' });
 });
 
-after((done) => {
+after(async (done) => {
   mongoose.models = {};
   mongoose.modelSchemas = {};
   mongoose.connection.close();
